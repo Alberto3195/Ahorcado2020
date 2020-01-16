@@ -18,6 +18,8 @@ public class ventanaAhorcado extends javax.swing.JFrame {
 
     int numeroFallos = 0;
 
+    String palabraOculta = "CETYS";
+
     /**
      * Creamos un contructor ventanaAhorcado
      */
@@ -30,6 +32,30 @@ public class ventanaAhorcado extends javax.swing.JFrame {
     //procesa la letra que tiene en su etiqueta
     private void chequeaBoton(JButton boton) {
         boton.setEnabled(false);
+        chequeaLetra(boton.getText());
+    }
+
+    private void chequeaLetra(String letra) {
+        String palabraConGuiones = jLabel1.getText();
+        
+        if (palabraOculta.contains(letra)) {
+            //en este caso la letra si que esta
+            //y hay que hacer que la o las letras se descubra 
+            //en la palabra con guiones
+            char letraPulsada = letra.charAt(0);
+            for(int i= 0; i<palabraOculta.length(); i++){
+                if (palabraOculta.charAt(i)== letraPulsada){
+                    palabraConGuiones = 
+                            palabraConGuiones.substring(0, 2*i)
+                            + letra
+                            + palabraConGuiones.substring(2*i+1);
+                }
+            }
+        }
+        else {
+            numeroFallos ++;
+            dibujaImagen();
+        }
     }
 
     //Cambia la imagen en funcion del numero de fallos que llevemos
@@ -60,17 +86,17 @@ public class ventanaAhorcado extends javax.swing.JFrame {
             default:
                 nombreImagen = "/imagenes/ahorcado_fin.png";
         }
-        ImageIcon miImagen = 
-                new ImageIcon(
+        ImageIcon miImagen
+                = new ImageIcon(
                         new ImageIcon(getClass().getResource(nombreImagen))
-                        .getImage()
-                        .getScaledInstance(jLabel2.getWidth(), 
-                                jLabel2.getHeight(),
-                                Image.SCALE_DEFAULT)
-        );
+                                .getImage()
+                                .getScaledInstance(jLabel2.getWidth(),
+                                        jLabel2.getHeight(),
+                                        Image.SCALE_DEFAULT)
+                );
         //cargo la imagen en el jLabel que muestra el fallo
         jLabel2.setIcon(miImagen);
-        
+
     }
 
     @SuppressWarnings("unchecked")
