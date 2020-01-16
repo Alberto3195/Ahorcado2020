@@ -51,6 +51,7 @@ public class ventanaAhorcado extends javax.swing.JFrame {
                             + palabraConGuiones.substring(2*i+1);
                 }
             }
+            jLabel1.setText(palabraConGuiones);
         }
         else {
             numeroFallos ++;
