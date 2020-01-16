@@ -13,7 +13,8 @@ import javax.swing.JButton;
  * @author Alberto
  */
 public class ventanaAhorcado extends javax.swing.JFrame {
-   
+   //Esta variable guarda cuantos fallos llevo en el juego
+    int numeroFallos = 0;
     
     /** Creates new form ventanaAhorcado */
     public ventanaAhorcado() {
@@ -24,6 +25,11 @@ public class ventanaAhorcado extends javax.swing.JFrame {
     //procesa la letra que tiene en su etiqueta
     private void chequeaBoton(JButton boton){
         boton.setEnabled(false);
+    }
+    
+    //Cambia la imagen en funcion del numero de fallos que llevemos
+    private void dibujaImagen(){
+        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
