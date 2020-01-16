@@ -5,6 +5,8 @@
  */
 package Codigo;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -17,10 +19,11 @@ public class ventanaAhorcado extends javax.swing.JFrame {
     int numeroFallos = 0;
 
     /**
-     * Creates new form ventanaAhorcado
+     * Creamos un contructor ventanaAhorcado
      */
     public ventanaAhorcado() {
-        initComponents();
+        initComponents(); //Dibuja los botones
+        dibujaImagen();
     }
 
     //Este metodo recibe el botón que ha sido pulsado y 
@@ -54,7 +57,20 @@ public class ventanaAhorcado extends javax.swing.JFrame {
             case 5:
                 nombreImagen = "/imagenes/ahorcado_5.png";
                 break;
+            default:
+                nombreImagen = "/imagenes/ahorcado_fin.png";
         }
+        ImageIcon miImagen = 
+                new ImageIcon(
+                        new ImageIcon(getClass().getResource(nombreImagen))
+                        .getImage()
+                        .getScaledInstance(jLabel2.getWidth(), 
+                                jLabel2.getHeight(),
+                                Image.SCALE_DEFAULT)
+        );
+        //cargo la imagen en el jLabel que muestra el fallo
+        jLabel2.setIcon(miImagen);
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -554,13 +570,17 @@ public class ventanaAhorcado extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ventanaAhorcado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventanaAhorcado.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ventanaAhorcado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventanaAhorcado.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ventanaAhorcado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventanaAhorcado.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ventanaAhorcado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventanaAhorcado.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
