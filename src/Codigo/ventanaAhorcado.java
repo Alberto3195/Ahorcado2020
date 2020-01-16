@@ -37,26 +37,30 @@ public class ventanaAhorcado extends javax.swing.JFrame {
 
     private void chequeaLetra(String letra) {
         String palabraConGuiones = jLabel1.getText();
-        
+
         if (palabraOculta.contains(letra)) {
             //en este caso la letra si que esta
             //y hay que hacer que la o las letras se descubra 
             //en la palabra con guiones
             char letraPulsada = letra.charAt(0);
-            for(int i= 0; i<palabraOculta.length(); i++){
-                if (palabraOculta.charAt(i)== letraPulsada){
-                    palabraConGuiones = 
-                            palabraConGuiones.substring(0, 2*i)
+            for (int i = 0; i < palabraOculta.length(); i++) {
+                if (palabraOculta.charAt(i) == letraPulsada) {
+                    palabraConGuiones
+                            = palabraConGuiones.substring(0, 2 * i)
                             + letra
-                            + palabraConGuiones.substring(2*i+1);
+                            + palabraConGuiones.substring(2 * i + 1);
                 }
             }
             jLabel1.setText(palabraConGuiones);
-        }
-        else {
-            numeroFallos ++;
+            if (!palabraConGuiones.contains("_")) {
+                numeroFallos = -1;
+                dibujaImagen();
+            }
+        } else {
+            numeroFallos++;
             dibujaImagen();
         }
+
     }
 
     //Cambia la imagen en funcion del numero de fallos que llevemos
@@ -66,6 +70,9 @@ public class ventanaAhorcado extends javax.swing.JFrame {
         //que escribirlos anidados
         switch (numeroFallos) {
             //break hace que si esta linea se cumple, no siga cumpliendo codigo
+            case -1:
+                nombreImagen = "/imagenes/acertasteTodo.png";
+                break;
             case 0:
                 nombreImagen = "/imagenes/ahorcado_0.png";
                 break;
