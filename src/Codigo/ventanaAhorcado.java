@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Codigo;
 
 import javax.swing.JButton;
@@ -13,24 +12,51 @@ import javax.swing.JButton;
  * @author Alberto
  */
 public class ventanaAhorcado extends javax.swing.JFrame {
-   //Esta variable guarda cuantos fallos llevo en el juego
+    //Esta variable guarda cuantos fallos llevo en el juego
+
     int numeroFallos = 0;
-    
-    /** Creates new form ventanaAhorcado */
+
+    /**
+     * Creates new form ventanaAhorcado
+     */
     public ventanaAhorcado() {
         initComponents();
     }
 
-     //Este metodo recibe el botón que ha sido pulsado y 
+    //Este metodo recibe el botón que ha sido pulsado y 
     //procesa la letra que tiene en su etiqueta
-    private void chequeaBoton(JButton boton){
+    private void chequeaBoton(JButton boton) {
         boton.setEnabled(false);
     }
-    
+
     //Cambia la imagen en funcion del numero de fallos que llevemos
-    private void dibujaImagen(){
-        
+    private void dibujaImagen() {
+        String nombreImagen = "";
+        //switch es el metodo donde puedo incluir varios casos de if sin tener
+        //que escribirlos anidados
+        switch (numeroFallos) {
+            //break hace que si esta linea se cumple, no siga cumpliendo codigo
+            case 0:
+                nombreImagen = "/imagenes/ahorcado_0.png";
+                break;
+            case 1:
+                nombreImagen = "/imagenes/ahorcado_1.png";
+                break;
+            case 2:
+                nombreImagen = "/imagenes/ahorcado_2.png";
+                break;
+            case 3:
+                nombreImagen = "/imagenes/ahorcado_3.png";
+                break;
+            case 4:
+                nombreImagen = "/imagenes/ahorcado_4.png";
+                break;
+            case 5:
+                nombreImagen = "/imagenes/ahorcado_5.png";
+                break;
+        }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -404,111 +430,111 @@ public class ventanaAhorcado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton23ActionPerformed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton24ActionPerformed
 
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton25ActionPerformed
 
     private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton26ActionPerformed
 
     private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton27ActionPerformed
 
     private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
-        chequeaBoton((JButton)evt.getSource());
+        chequeaBoton((JButton) evt.getSource());
     }//GEN-LAST:event_jButton28ActionPerformed
 
     /**
