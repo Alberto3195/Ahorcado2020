@@ -6,6 +6,7 @@
 package Codigo;
 
 import java.awt.Image;
+import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -14,97 +15,104 @@ import javax.swing.JButton;
  * @author Alberto
  */
 public class ventanaAhorcado extends javax.swing.JFrame {
-    //Esta variable guarda cuantos fallos llevo en el juego
 
+    //esta variable guarda cuántos fallos llevo en el juego
     int numeroFallos = 0;
-
-    String palabraOculta = "CETYS";
+    boolean partidaTerminada = false; //indica si la partida ha terminado
+    String palabraOculta = eligePalabra();
 
     /**
-     * Creamos un contructor ventanaAhorcado
+     * Creates new form VentanaAhorcado
      */
     public ventanaAhorcado() {
-        initComponents(); //Dibuja los botones
+        initComponents();
         dibujaImagen();
+        //inicializo el jLabel en el que se muestran los guiones bajos
+        String auxiliar = "";
+        for (int i=0; i < palabraOculta.length();i++){
+            auxiliar = auxiliar + "_ ";
+        }
+        jLabel1.setText(auxiliar);
     }
-
-    //Este metodo recibe el botón que ha sido pulsado y 
-    //procesa la letra que tiene en su etiqueta
-    private void chequeaBoton(JButton boton) {
-        boton.setEnabled(false);
-        chequeaLetra(boton.getText());
+    
+    //eligePalabra va a seleccionar una palabra al azar de un array de palabras
+    private String eligePalabra(){
+        String [] listaPalabras = {"CETYS","hola", "VLADIKAKA", "BORREGUITO", "BABYYODA"};
+        Random aleatorio = new Random(); //variable aleatoria para elegir una palabra al azar
+        int posicion = aleatorio.nextInt(listaPalabras.length);
+        return listaPalabras[posicion].toUpperCase();
     }
-
-    private void chequeaLetra(String letra) {
+    
+    //este método recibe el botón que ha sido pulsado
+    //y procesa la letra que tiene en su etiqueta
+    private void chequeaBoton(JButton boton){
+        if (!partidaTerminada){
+            boton.setEnabled(false);
+            chequeaLetra(boton.getText());      
+        }
+    }
+    
+    private void chequeaLetra(String letra){
         String palabraConGuiones = jLabel1.getText();
-
-        if (palabraOculta.contains(letra)) {
-            //en este caso la letra si que esta
-            //y hay que hacer que la o las letras se descubra 
-            //en la palabra con guiones
+        
+        if (palabraOculta.contains(letra)){
+            //en este caso la letra sí que está
+            //y hay que hacer que la o las letras se descubran en la palabra con guiones
             char letraPulsada = letra.charAt(0);
-            for (int i = 0; i < palabraOculta.length(); i++) {
-                if (palabraOculta.charAt(i) == letraPulsada) {
-                    palabraConGuiones
-                            = palabraConGuiones.substring(0, 2 * i)
+            for (int i=0; i< palabraOculta.length(); i++){
+                if (palabraOculta.charAt(i) == letraPulsada){
+                    palabraConGuiones = 
+                            palabraConGuiones.substring(0, 2*i)
                             + letra
-                            + palabraConGuiones.substring(2 * i + 1);
+                            + palabraConGuiones.substring(2*i+1);
                 }
             }
+            
             jLabel1.setText(palabraConGuiones);
-            if (!palabraConGuiones.contains("_")) {
+            if(!palabraConGuiones.contains("_")){
                 numeroFallos = -1;
                 dibujaImagen();
+                partidaTerminada = true;
             }
-        } else {
+            
+        }
+        else {
             numeroFallos++;
+            if (numeroFallos == 6){
+                partidaTerminada = true;
+            }
             dibujaImagen();
         }
-
+        
+        
     }
-
-    //Cambia la imagen en funcion del numero de fallos que llevemos
-    private void dibujaImagen() {
+    
+    //cambia la imagen en función de cuántos fallos llevamos
+    private void dibujaImagen(){
         String nombreImagen = "";
-        //switch es el metodo donde puedo incluir varios casos de if sin tener
-        //que escribirlos anidados
-        switch (numeroFallos) {
-            //break hace que si esta linea se cumple, no siga cumpliendo codigo
-            case -1:
-                nombreImagen = "/imagenes/acertasteTodo.png";
-                break;
-            case 0:
-                nombreImagen = "/imagenes/ahorcado_0.png";
-                break;
-            case 1:
-                nombreImagen = "/imagenes/ahorcado_1.png";
-                break;
-            case 2:
-                nombreImagen = "/imagenes/ahorcado_2.png";
-                break;
-            case 3:
-                nombreImagen = "/imagenes/ahorcado_3.png";
-                break;
-            case 4:
-                nombreImagen = "/imagenes/ahorcado_4.png";
-                break;
-            case 5:
-                nombreImagen = "/imagenes/ahorcado_5.png";
-                break;
-            default:
-                nombreImagen = "/imagenes/ahorcado_fin.png";
+        switch (numeroFallos){
+            case -1: nombreImagen = "/imagenes/acertasteTodo.png"; break; 
+            case 0: nombreImagen = "/imagenes/ahorcado_0.png"; break; 
+            case 1: nombreImagen = "/imagenes/ahorcado_1.png"; break;
+            case 2: nombreImagen = "/imagenes/ahorcado_2.png"; break;
+            case 3: nombreImagen = "/imagenes/ahorcado_3.png"; break;
+            case 4: nombreImagen = "/imagenes/ahorcado_4.png"; break;
+            case 5: nombreImagen = "/imagenes/ahorcado_5.png"; break;
+            default : nombreImagen = "/imagenes/ahorcado_fin.png"; break;
         }
-        ImageIcon miImagen
-                = new ImageIcon(
+        
+        ImageIcon miImagen =
+                new ImageIcon(
                         new ImageIcon(getClass().getResource(nombreImagen))
-                                .getImage()
-                                .getScaledInstance(jLabel2.getWidth(),
-                                        jLabel2.getHeight(),
-                                        Image.SCALE_DEFAULT)
-                );
-        //cargo la imagen en el jLabel que muestra el fallo
+                        .getImage()
+                        .getScaledInstance(jLabel2.getWidth(),
+                                           jLabel2.getHeight(),
+                                           Image.SCALE_DEFAULT)
+                
+        );
+        //cargo la imagen en el jLabel que muestra qué fallo llevamos
         jLabel2.setIcon(miImagen);
-
+        
     }
 
     @SuppressWarnings("unchecked")
