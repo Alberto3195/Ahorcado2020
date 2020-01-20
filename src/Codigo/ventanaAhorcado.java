@@ -30,7 +30,7 @@ public class ventanaAhorcado extends javax.swing.JFrame {
         //inicializo el jLabel en el que se muestran los guiones bajos
         String auxiliar = "";
         for (int i=0; i < palabraOculta.length();i++){
-            auxiliar = auxiliar + "_ ";
+            auxiliar = auxiliar + "_";
         }
         jLabel1.setText(auxiliar);
     }
